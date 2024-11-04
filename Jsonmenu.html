@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NammaRestaurant</title>
+    <link rel="icon" href="food.jpg">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to NammaRestaurant</h1>
+        <p>Order your favorite dishes online!</p>
+        <div id="menu-container"></div>
+    </div>
+
+    <script>
+        const menuData = {
+            "menu": [
+                {
+                    "category": "Main Course",
+                    "items": [
+                        {
+                            "id": 201,
+                            "name": "Margherita Pizza",
+                            "description": "Classic cheese pizza with tomato and basil.",
+                            "price": 575,
+                            "image": "margherita_pizza.jpeg"
+                        },
+                        {
+                            "id": 202,
+                            "name": "Chicken Biryani",
+                            "description": "Flavorful biryani with bread halwa.",
+                            "price": 399,
+                            "image": "chicken_biryani.jpeg"
+                        }
+                    ]
+                },
+                {
+                    "category": "Desserts",
+                    "items": [
+                        {
+                            "id": 301,
+                            "name": "Chocolate Cake",
+                            "description": "Rich and moist chocolate cake.",
+                            "price": 739,
+                            "image": "chocolate_cake.jpeg"
+                        },
+                        {
+                            "id": 302,
+                            "name": "Ice Cream",
+                            "description": "Vanilla ice cream with toppings.",
+                            "price": 130,
+                            "image": "ice_cream.jpeg"
+                        }
+                    ]
+                }
+            ]
+        };
+
+        function renderMenu(menu) {
+            const menuContainer = document.getElementById("menu-container");
+
+            menu.forEach(category => {
+                const categoryElement = document.createElement("div");
+                categoryElement.className = "menu-category";
+
+                const categoryTitle = document.createElement("h2");
+                categoryTitle.textContent = category.category;
+                categoryElement.appendChild(categoryTitle);
+
+                category.items.forEach(item => {
+                    const itemElement = document.createElement("div");
+                    itemElement.className = "menu-item";
+
+                    const itemImage = document.createElement("img");
+                    itemImage.src = item.image;
+                    itemImage.alt = item.name;
+
+                    const itemName = document.createElement("h3");
+                    itemName.textContent = item.name;
+
+                    const itemDescription = document.createElement("p");
+                    itemDescription.textContent = item.description;
+
+                    const itemPrice = document.createElement("p");
+                    itemPrice.className = "price";
+                    itemPrice.textContent = `Rs.${item.price.toFixed(2)}`;
+
+                    itemElement.appendChild(itemImage);
+                    itemElement.appendChild(itemName);
+                    itemElement.appendChild(itemDescription);
+                    itemElement.appendChild(itemPrice);
+
+                    categoryElement.appendChild(itemElement);
+                });
+
+                menuContainer.appendChild(categoryElement);
+            });
+        }
+
+        renderMenu(menuData.menu);
+    </script>
+    <footer>
+        <h3>STILL MANY MORE DISHES AND DESSERTS.</h3>
+        <h3>COME, TASTE AND ENJOY!!</h3>
+        <p>📍Location: 5'B' Saibaba colony, Coimbatore</p>
+        <p>📅Date: 01/03/2024</p>
+        <p>📱Contact: 9876543210</p>
+        <nav>
+            <a class="nav-link" href="index.html">CLICK HERE TO BOOK YOUR SEAT</a>
+            <br>
+            <a class="nav-link" href="front.html">HOME</a>
+        </nav>
+    </footer>
+</body>
+</html>
+

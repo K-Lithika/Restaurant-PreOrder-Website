@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>NammaRestaurant</title>
+    <link rel="icon" href="food.jpg">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>NAMMA RESTAURANT</h1>
+        <h2>BOOK YOUR SEAT</h2>
+        <nav>
+            <a class="nav-link" href="SECOND.html">CLICK HERE TO CHECK MENU</a><br>
+            <a class="nav-link" href="front.html">HOME</a>
+        </nav>
+        <form id="reservationForm" action="process_reservation.php" method="POST">
+            <div class="form-group">
+                <label for="name">NAME</label>
+                <input type="text" id="name" name="name" placeholder="Enter your name" required>
+            </div>
+            <div class="form-group">
+                <label for="arriving_time">ARRIVING TIME</label>
+                <input type="text" name="arriving_time" placeholder="Enter the time you need your order" required>
+            </div>
+            <div class="form-group">
+                <label for="seat_number">SEAT NUMBER</label>
+                <input type="number" name="seat_number" placeholder="Enter the SEAT NUMBER" required>
+            </div>
+            <div class="form-group">
+                <label for="number_of_people">NUMBER OF PEOPLE</label>
+                <input type="number" name="number_of_people" placeholder="Enter no. of people" required>
+            </div>
+            <div class="form-group radio-group">
+                <label>YOUR ORDER</label>
+                <input type="radio" name="order" value="Chicken Briyani" required>Chicken Briyani
+                <input type="radio" name="order" value="Margherita Pizza" required>Margherita Pizza
+                <input type="radio" name="order" value="Chocolate Cake" required>Chocolate Cake
+                <input type="radio" name="order" value="Ice Cream" required>Ice Cream
+
+            </div>
+            <div class="form-group">
+                <input class="button reset" type="reset" value="Reset">
+                <input class="button submit" type="submit" value="Submit">
+            </div>
+        </form>
+    </div>
+    <script>
+        document.getElementById("reservationForm").addEventListener("submit", function(event) {
+            var seatNumber = parseInt(document.querySelector('input[name="seat_number"]').value);
+            var numberOfPeople = parseInt(document.querySelector('input[name="number_of_people"]').value);
+
+            if (numberOfPeople > 6) {
+                event.preventDefault();
+                alert("Sorry, the maximum number of people per table is 6. Please book multiple tables for larger groups.");
+            }
+
+            if (seatNumber > 10) {
+                event.preventDefault();
+                alert("Invalid seat number. Seat numbers range from 1 to 10. Please enter a valid seat number.");
+            }
+        });
+    </script>
+</body>
+</html>
+
